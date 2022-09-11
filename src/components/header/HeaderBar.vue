@@ -25,7 +25,6 @@ export default {
 }
 
 .headerbar {
-  padding: 0;
   margin: 0;
   font-family: 'SeoulHangangM';
   font-size: 15px;
@@ -34,16 +33,20 @@ export default {
 
 li {
   list-style: none;
+  color: black;
 }
 
 li:hover{
-  color:#6667AB;
+  color:#FFFFFF;
   font-style: bold;
+  background-color: #6667AB;
+  font-weight: normal;
 }
 
 .headerbar ul li {
   float: left;
   margin-left: 20px;
+  padding: 5px;
 }
 
 li img {
