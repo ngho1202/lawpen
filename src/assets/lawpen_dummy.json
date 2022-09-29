@@ -1,0 +1,122 @@
+[
+  {
+      "law_id": 1,
+      "law_title": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률",
+      "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=232157&type=HTML&mobileYn=&efYd=20210518",
+      "law_short_title": "10ㆍ27법난법",
+      "law_raw_id": 10719,
+      "law_make_date": "2021-05-18",
+      "law_o  rg_code": 1371000,
+      "law_org_name": "문화체육관광부",
+      "law_kind": "법률",
+      "law_start_date": "2021-05-18"
+  },
+  {
+    "law_id": 2,
+    "law_title": "10ㆍ27법난 피해자의 명예회복 등에 관한 법률 시행령",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=235703&type=HTML&mobileYn=&efYd=20210929",
+    "law_short_title": "10ㆍ27법난법시행령",
+    "law_raw_id": 10831,
+    "law_make_date": "2021-09-29",
+    "law_org_code": 1371000,
+    "law_org_name": "문화체육관광부",
+    "law_kind": "대통령령",
+    "law_start_date": "2021-09-29"
+  },
+  {
+    "law_id": 3,
+    "law_title": "119구조ㆍ구급에 관한 법률",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=236231&type=HTML&mobileYn=&efYd=20220120",
+    "law_short_title": "119법",
+    "law_raw_id": 11349,
+    "law_make_date": "2021-10-19",
+    "law_org_code": 1661000,
+    "law_org_name": "소방청",
+    "law_kind": "법률",
+    "law_start_date": "2022-01-20"
+  },
+  {
+    "law_id": 4,
+    "law_title": "119구조ㆍ구급에 관한 법률 시행령",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=236155&type=HTML&mobileYn=&efYd=20220106",
+    "law_short_title": "119법시행령",
+    "law_raw_id": 11452,
+    "law_make_date": "2021-10-19",
+    "law_org_code": 1661000,
+    "law_org_name": "소방청",
+    "law_kind": "대통령령",
+    "law_start_date": "2022-01-06"
+  },
+  {
+    "law_id": 5,
+    "law_title": "119구조ㆍ구급에 관한 법률 시행규칙",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=241659&type=HTML&mobileYn=&efYd=20220330",
+    "law_short_title": "119법시행규칙",
+    "law_raw_id": 11457,
+    "law_make_date": "2022-03-30",
+    "law_org_code": 1661000,
+    "law_org_name": "소방청",
+    "law_kind": "행정안전부령",
+    "law_start_date": "2022-03-30"
+  },
+  {
+    "law_id": 6,
+    "law_title": "1945년이후종전의규정에의한학교졸업자자격인정령",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=24144&type=HTML&mobileYn=&efYd=19691204",
+    "law_short_title": "NaN",
+    "law_raw_id": 4546,
+    "law_make_date": "1969-12-04",
+    "law_org_code": 1342000,
+    "law_org_name": "교육부",
+    "law_kind": "대통령령",
+    "law_start_date": "1969-12-04"
+  },
+  {
+    "law_id": 7,
+    "law_title": "1959년 12월 31일 이전에 퇴직한 군인의 퇴직급여금지급에 관한 특별법",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=206017&type=HTML&mobileYn=&efYd=20190625",
+    "law_short_title": "1959이전군퇴직금법",
+    "law_raw_id": 9678,
+    "law_make_date": "2018-12-24",
+    "law_org_code": 1290000,
+    "law_org_name": "국방부",
+    "law_kind": "법률",
+    "law_start_date": "2019-06-25"
+  },
+  {
+    "law_id": 8,
+    "law_title": "1959년 12월 31일 이전에 퇴직한 군인의 퇴직급여금지급에 관한 특별법 시행령",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=208133&type=HTML&mobileYn=&efYd=20190325",
+    "law_short_title": "1959이전군퇴직금법시행령",
+    "law_raw_id": 9990,
+    "law_make_date": "2019-03-25",
+    "law_org_code": 1290000,
+    "law_org_name": "국방부",
+    "law_kind": "대통령령",
+    "law_start_date": "2019-03-25"
+  },
+  {
+    "law_id": 9,
+    "law_title": "1980년해직공무원의보상등에관한특별조치법",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=3274&type=HTML&mobileYn=&efYd=19890329",
+    "law_short_title": "1980해직자보상법",
+    "law_raw_id": 1348,
+    "law_make_date": "1989-03-29",
+    "law_org_code": 1760000,
+    "law_org_name": "인사혁신처",
+    "law_kind": "법률",
+    "law_start_date": "1989-03-29"
+  },
+  {
+    "law_id": 10,
+    "law_title": "1980년해직공무원의보상등에관한특별조치법시행령",
+    "law_url": "/DRF/lawService.do?OC=ngho1202&target=law&MST=204611&type=HTML&mobileYn=&efYd=20180921",
+    "law_short_title": "1980해직자보상법시행령",
+    "law_raw_id": 4549,
+    "law_make_date": "2018-09-18",
+    "law_org_code": 1760000,
+    "law_org_name": "인사혁신처",
+    "law_kind": "대통령령",
+    "law_start_date": "2018-09-21"
+  }
+]

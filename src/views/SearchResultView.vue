@@ -5,27 +5,13 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <div class="contentsbox">
-        <p> 1 </p>
-      </div>
+      <ContentsBox class="contentsbox">
+      </ContentsBox>
+      <!--
       <div class="contentsbox">
         <p> 2 </p>
       </div>
-      <div class="contentsbox">
-        <p> 3 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 4 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 5 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 6 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 7 </p>
-      </div>
+    -->
     </body>
   </div>
 </template>
@@ -34,12 +20,14 @@
 // @ is an alias to /src
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
+import ContentsBox from '@/components/search/ContentsBox.vue'
 
 export default {
   name: 'SearchResultView',
   components: {
     HeaderMain,
-    SearchBar
+    SearchBar,
+    ContentsBox
   }
 }
 </script>
