@@ -5,7 +5,6 @@
       <ul>
         <div>
           <span class="contentsbox">
-            <a :href="'https://www.law.go.kr/법령/상속세및증여세법'">test</a> 
             <a :href="'https://www.law.go.kr' + resultLists[0].law_url" target="_blank">{{ resultLists[0].law_title }}</a> - {{ resultLists[0].law_kind }} <br>
             {{ resultLists[0].law_org_name }} - {{ resultLists[0].law_start_date }}
           </span>
@@ -26,7 +25,7 @@ export default {
     resultLists: resultList
   },
   */
-
+  props: ["rank"],
   computed: {
     resultLists() {
       return resultList.map((items) => {

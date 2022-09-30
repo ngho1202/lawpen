@@ -5,7 +5,7 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <ContentsBox class="contentsbox">
+      <ContentsBox class="contentsbox" v-bind:rank="index">
       </ContentsBox>
       <!--
       <div class="contentsbox">
@@ -28,6 +28,9 @@ export default {
     HeaderMain,
     SearchBar,
     ContentsBox
+  },
+  data: function() {
+    return index: 0;
   }
 }
 </script>
