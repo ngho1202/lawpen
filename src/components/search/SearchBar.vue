@@ -31,7 +31,7 @@ export default {
 }
 
 .searchbar {
-  display: inline;
+  display: flex;
   text-align: center;
   min-width: 670px;
 }

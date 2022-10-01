@@ -87,6 +87,7 @@ footer {
 #searchbarbox {
   margin: 0;
   padding: 0;
+  display: flex;
   position: absolute;
   top: -25px;
   left: 50%;
