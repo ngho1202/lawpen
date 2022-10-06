@@ -5,7 +5,8 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <ContentsBox class="contentsbox" v-bind:rank="index">
+      <ContentsBox class="contentsbox" v-bind:rank="index"
+      v-for="index in 10" :key="index">
       </ContentsBox>
       <!--
       <div class="contentsbox">
@@ -29,8 +30,10 @@ export default {
     SearchBar,
     ContentsBox
   },
-  data: function() {
-    return index: 0;
+  data() {
+    return {
+      index: 0
+    }
   }
 }
 </script>
@@ -74,11 +77,14 @@ body {
 }
 
 .contentsbox {
+  text-align: left;
   width: 900px;
-  height: 150px;
+  height: flex;
   display: block;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   margin: 10px;
+
 }
+
 </style>

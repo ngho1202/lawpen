@@ -1,19 +1,19 @@
 <template>
-  <span class="contentsbox">
-    <div class="flexbox">
-      <!-- 내용 -->
       <ul>
-        <div>
-          <span class="contentsbox">
-            <a :href="'https://www.law.go.kr' + resultLists[0].law_url" target="_blank">{{ resultLists[0].law_title }}</a> - {{ resultLists[0].law_kind }} <br>
-            {{ resultLists[0].law_org_name }} - {{ resultLists[0].law_start_date }}
-          </span>
-        </div>
+        <span class="contentsBox">
+          <div class="contentsTitle" style=" background-color: gold; width: 300px; height: auto; cursor: pointer;"
+          onclick="window.open('http://law.go.kr' + resultLists[rank].law_url;" target="_blank">
+            <a :href="'https://www.law.go.kr' + getUrl" target="_blank">{{ resultLists[rank].law_title }}</a> - {{ resultLists[rank].law_kind }}
+          </div>
+          <div class="contentsData">
+            {{ resultLists[rank].law_org_name }} - {{ resultLists[rank].law_start_date }}
+            <a :href="'https://www.law.go.kr' + resultLists[rank].law_url" target="_blank">hihhihihihii</a>
+          </div>
+        </span>
       </ul>
-
-    </div>
-  </span>
 </template>
+
+
 
 <script>
 import resultList from '@/assets/lawpen_dummy.json'
@@ -31,8 +31,12 @@ export default {
       return resultList.map((items) => {
         return items;
       });
+    },
+    getUrl() {
+      var url = this.resultLists[this.rank].law_url;
+      return url;
     }
-  }
+  },
 
 }
 </script>
@@ -46,6 +50,13 @@ export default {
     font-style: normal;
 }
 
+.contentsTitle {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/*
 input {
   font-weight: bold;
   font-size: 20px;
@@ -74,7 +85,7 @@ input::placeholder {
   color: #6667AB;
   font-style:normal;
 }
-
+*/
 
 
 </style>
