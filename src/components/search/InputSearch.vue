@@ -1,12 +1,20 @@
 <template>
-  <form class='searchInput'>
-    <input type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요.">
+  <form class="searchInput"  id="form_tag" v-on:submit.prevent="submitInput">
+    <input v-model="law_title" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''" onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
   </form>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'InputSearch'
+  name: 'InputSearch',
+  methods: {
+    submitInput: function() {
+      // var law_title = document.getElementById("form_tag").value
+      axios.post('/lawtitle', {"law_title": this.law_title})
+    }
+  }
 }
 </script>
 

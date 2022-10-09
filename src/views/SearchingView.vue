@@ -7,7 +7,8 @@
     <BackgroundImage></BackgroundImage>
     </div>
     <body>
-      <SearchBar id="searchbarbox"></SearchBar>
+      <SearchBar id="searchbarbox" >
+      </SearchBar>
     </body>
   </div>
 </template>
@@ -18,13 +19,14 @@ import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import BackgroundImage from '@/components/body/BackgroundImage.vue'
 
+
 export default {
   name: 'SearchingView',
   components: {
     HeaderMain,
     SearchBar,
     BackgroundImage
-  }
+  },
 }
 </script>
 

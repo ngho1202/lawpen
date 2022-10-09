@@ -10,7 +10,10 @@
     </body>
     <footer>
       <div id="searchbarbox">
+        <!--
         <router-link style=text-decoration:none; :to="{ name: 'searching', params: {} }"><SearchBar></SearchBar></router-link>
+        -->
+        <SearchBar></SearchBar>
       </div>
       <div id="contentsbox">
         <RankingList id="footer1"></RankingList>
