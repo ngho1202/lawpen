@@ -12,7 +12,7 @@ export default {
   methods: {
     submitInput: function() {
       // var law_title = document.getElementById("form_tag").value
-      axios.post('/lawtitle', {"law_title": this.law_title})
+      axios.get('/lawresult', {"law_title": this.law_title})
     }
   }
 }
