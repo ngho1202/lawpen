@@ -5,27 +5,14 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <div class="contentsbox">
-        <p> 1 </p>
-      </div>
+      <ContentsBox class="contentsbox" v-bind:rank="index"
+      v-for="index in 10" :key="index">
+      </ContentsBox>
+      <!--
       <div class="contentsbox">
         <p> 2 </p>
       </div>
-      <div class="contentsbox">
-        <p> 3 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 4 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 5 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 6 </p>
-      </div>
-      <div class="contentsbox">
-        <p> 7 </p>
-      </div>
+    -->
     </body>
   </div>
 </template>
@@ -34,12 +21,19 @@
 // @ is an alias to /src
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
+import ContentsBox from '@/components/search/ContentsBox.vue'
 
 export default {
   name: 'SearchResultView',
   components: {
     HeaderMain,
-    SearchBar
+    SearchBar,
+    ContentsBox
+  },
+  data() {
+    return {
+      index: 0
+    }
   }
 }
 </script>
@@ -83,11 +77,14 @@ body {
 }
 
 .contentsbox {
+  text-align: left;
   width: 900px;
-  height: 150px;
+  height: flex;
   display: block;
   position: relative;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   margin: 10px;
+
 }
+
 </style>
