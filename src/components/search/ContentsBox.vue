@@ -1,13 +1,20 @@
 <template>
       <ul>
-        <span class="contentsBox">
-          <div class="contentsTitle" style=" background-color: gold; width: 300px; height: auto; cursor: pointer;"
-          onclick="window.open('http://law.go.kr' + resultLists[rank].law_url;" target="_blank">
+        <span class="contentsBox" @click="linking(resultLists[rank])" style="cursor: pointer;">
+          <div class="contentsTitle">
+
+          <!--
+
+          onclick="location.href='http://law.go.kr';">
+
+          onclick="window.open('http://naver.com' +  \'' + getUrl + '\'  );">
+          -->
+
+
             <a :href="'https://www.law.go.kr' + getUrl" target="_blank">{{ resultLists[rank].law_title }}</a> - {{ resultLists[rank].law_kind }}
           </div>
           <div class="contentsData">
             {{ resultLists[rank].law_org_name }} - {{ resultLists[rank].law_start_date }}
-            <a :href="'https://www.law.go.kr' + resultLists[rank].law_url" target="_blank">hihhihihihii</a>
           </div>
         </span>
       </ul>
@@ -26,6 +33,12 @@ export default {
   },
   */
   props: ["rank"],
+  methods: {
+    linking(data) {
+      window.open('http://law.go.kr' + data.law_url);
+      console.log(data.law_url);
+    }
+  },
   computed: {
     resultLists() {
       return resultList.map((items) => {
