@@ -2,19 +2,16 @@
       <ul>
         <span class="contentsBox" @click="linking(resultLists[rank])" style="cursor: pointer;">
           <div class="contentsTitle">
-
-          <!--
-
-          onclick="location.href='http://law.go.kr';">
-
-          onclick="window.open('http://naver.com' +  \'' + getUrl + '\'  );">
-          -->
-
-
             <a :href="'https://www.law.go.kr' + getUrl" target="_blank">{{ resultLists[rank].law_title }}</a> - {{ resultLists[rank].law_kind }}
           </div>
           <div class="contentsData">
             {{ resultLists[rank].law_org_name }} - {{ resultLists[rank].law_start_date }}
+          </div>
+          <div v-if="drawer">
+            True
+          </div>
+          <div v-else>
+            False
           </div>
         </span>
       </ul>
@@ -27,11 +24,12 @@ import resultList from '@/assets/lawpen_dummy.json'
 
 export default {
   name: 'ContextBox',
-  /*
   data: () => {
-    resultLists: resultList
+    //resultLists: resultList
+    return {
+      drawer: true,
+    };
   },
-  */
   props: ["rank"],
   methods: {
     linking(data) {
@@ -49,6 +47,11 @@ export default {
       var url = this.resultLists[this.rank].law_url;
       return url;
     }
+  },
+  created() {
+    this.$EventBus.$on('click-icon', () => {
+      this.drawer = !this.drawer;
+    });
   },
 
 }

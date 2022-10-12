@@ -7,6 +7,7 @@ import ErrorSendView from '../views/ErrorSendView.vue'
 import SearchResultView from '../views/SearchResultView.vue'
 import SignInView from '../views/SignInView.vue'
 import SignUpView from '../views/SignUpView.vue'
+import SearchTestView from '../views/SearchTestView.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/category',
     name: 'category',
     component: CategoryListView
+  },
+  {
+    path: '/searchtest',
+    name: 'searchtest',
+    component: SearchTestView
   }
 ]
 
