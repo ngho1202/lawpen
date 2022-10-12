@@ -6,7 +6,7 @@
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
       <ContentsBox class="contentsbox" v-bind:rank="index"
-      v-for="index in 10" :key="index">
+      v-for="index in 5" :key="index">
       </ContentsBox>
     </body>
   </div>
@@ -19,7 +19,7 @@ import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
 
 export default {
-  name: 'SearchResultView',
+  name: 'SearchTestView',
   components: {
     HeaderMain,
     SearchBar,
