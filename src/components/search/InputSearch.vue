@@ -1,6 +1,7 @@
 <template>
-  <form class="searchInput"  id="form_tag" v-on:submit.prevent="submitInput">
-    <input v-model="law_title" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''" onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
+  <form class="searchInput" id="form_tag" v-on:submit.prevent="submitInput">
+    <input id="law_title" v-model="law_title" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요."
+      onfocus="this.placeholder=''" onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
   </form>
 </template>
 
@@ -8,11 +9,21 @@
 import axios from 'axios'
 
 export default {
+  data: function () {
+    return {
+      law_title: '',
+    }
+  },
   name: 'InputSearch',
   methods: {
-    submitInput: function() {
-      // var law_title = document.getElementById("form_tag").value
-      axios.get('/lawresult', {"law_title": this.law_title})
+    submitInput: function () {
+      console.log(this.law_title)
+      axios.get('http://localhost:8888/lawresult/' + this.law_title).then(function (response) {
+        console.log(response);
+        this.result = response.data
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 }
@@ -21,10 +32,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @font-face {
-    font-family: 'SeoulHangangM';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangangM.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'SeoulHangangM';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangangM.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 input {
@@ -53,7 +64,6 @@ input {
 
 input::placeholder {
   color: #6667AB;
-  font-style:normal;
+  font-style: normal;
 }
-
 </style>

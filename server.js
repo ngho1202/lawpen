@@ -1,16 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const spawn = require('child_process').spawn;
 const { PythonShell } = require("python-shell");
 
 const app = express();
 
+
 var corsOptions = {
-  origin: "http://localhost:8888"
+  origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
+
+app.use(express.json());				// json 형태의 Request Body를 받기 위해 사용
+app.use(express.urlencoded({ extended: true }));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
