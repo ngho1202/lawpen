@@ -1,21 +1,20 @@
 <template>
-
-  <form class="searchInput"  id="form_tag" v-on:submit.prevent="$EventBus.$emit('click-icon')">
-    <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요."
-    onfocus="this.placeholder=''" onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
+  <form class="searchInput" id="form_tag" v-on:submit.prevent="submitInput">
+    <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''"
+      onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
     </base-input>
   </form>
 </template>
 
 <script>
-//  import axios from 'axios';
+import axios from 'axios';
 import BaseInput from './BaseInput.vue';
 
 export default {
   components: {
     'base-input': BaseInput
   },
-  data: function() {
+  data: function () {
     return {
       inputText: ''
     }
@@ -26,8 +25,13 @@ export default {
     submitInput: function () {
       console.log(this.inputText)
       axios.get('http://localhost:8888/lawresult/' + this.inputText).then(function (response) {
-        console.log(response);
-        this.result = response.data
+        let result_str = response.data.toString();
+        result_str = result_str.slice(0, result_str.length + 1);
+        let json_result = JSON.parse(result_str);
+        console.log(typeof json_result);
+        console.log(result_str);
+        self.result = response.data;
+
       }).catch(function (error) {
         console.log(error);
       });

@@ -7,8 +7,8 @@ import sys
 import json
 
 Doc2Vec_model = Doc2Vec.load("lawpen_doc2vec")
-law_list = pd.read_csv("law_list.csv", encoding="utf-8")
-morphs_law = pd.read_csv("morphs_law.csv", encoding="utf-8")
+law_list = pd.read_csv("law_list.csv", encoding="utf-8", keep_default_na=False)
+morphs_law = pd.read_csv("morphs_law.csv", encoding="utf-8", keep_default_na=False)
 
 morphs_law["token_list"] = morphs_law["token_list"].str.replace("'", "")
 morphs_law["token_list"] = morphs_law["token_list"].str.replace("[", "")
@@ -23,7 +23,10 @@ def model_result(law_title: str = sys.argv[1]):
             TaggedDocument(morphs_law["token_list"][i], [str(morphs_law["구분ID"][i])])
         )
 
-    law_id = str(law_list[law_list["법령명한글"] == law_title]["법령ID"].values[0])
+    try:
+        law_id = str(law_list[law_list["법령명한글"] == law_title]["법령ID"].values[0])
+    except:
+        print("")
 
     target_index = 0
     for i in range(len(id_tagged)):
@@ -52,7 +55,7 @@ def model_result(law_title: str = sys.argv[1]):
         }
         top_list.append(one_dict)
 
-    print(json.dumps(top_list))
+    print(json.dumps(top_list, ensure_ascii=False))
 
 
 if __name__ == "__main__":
