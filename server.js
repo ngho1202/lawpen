@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/lawresult/:lawtitle", function(req, res) {
   var law_title = req.params["lawtitle"];
 
-  var python_options = { 
+  var python_options = {
     mode: 'text',
     encoding: "utf-8",
     pythonPath: '',
@@ -43,7 +43,7 @@ app.get("/lawresult/:lawtitle", function(req, res) {
   });
   // var model_result = spawn('python', ['./model.py', law_title]);
 
-});
+}); 
 
 // set port, listen for requests
 const PORT = 8888;

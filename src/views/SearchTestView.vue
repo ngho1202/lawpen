@@ -6,7 +6,7 @@
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
       <ContentsBox class="contentsbox" v-bind:rank="index"
-      v-for="index in 5" :key="index">
+      v-for="index in 10" :key="index">
       </ContentsBox>
     </body>
   </div>

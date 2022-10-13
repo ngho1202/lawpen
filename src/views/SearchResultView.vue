@@ -5,7 +5,9 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <ContentsBox class="contentsbox" v-bind:rank="index"
+      <ContentsBox class="contentsbox"
+      v-bind:rank="index"
+      v-bind:resultList="resultLists"
       v-for="index in 10" :key="index">
       </ContentsBox>
     </body>
@@ -18,6 +20,9 @@ import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
 
+import EventBus from '@/eventBus.js';
+import axios from 'axios';
+
 export default {
   name: 'SearchResultView',
   components: {
@@ -27,9 +32,26 @@ export default {
   },
   data() {
     return {
-      index: 0
+      index: 0,
+      resultLists: '',
     }
-  }
+  },
+  created: function() {
+    EventBus.$on('send', function(value) {
+      console.log(this.resultLists);
+      axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
+        let result_str = response.data.toString();
+        result_str = result_str.slice(0, result_str.length + 1);
+        let json_result = JSON.parse(result_str);
+        this.resultLists = json_result;
+        // this.resultLists = result_str;
+        // console.log(this.resultLists);
+        console.log(this.resultLists);
+      }).catch( (error) => {
+        console.log(error);
+      });
+    }.bind(this));
+  },
 }
 </script>
 

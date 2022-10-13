@@ -1,17 +1,11 @@
 <template>
       <ul>
-        <span class="contentsBox" @click="linking(resultLists[rank])" style="cursor: pointer;">
+        <span class="contentsBox" @click="linking(resultList[rank])" style="cursor: pointer;">
           <div class="contentsTitle">
-            <a :href="'https://www.law.go.kr' + getUrl" target="_blank">{{ resultLists[rank].law_title }}</a> - {{ resultLists[rank].law_kind }}
+            <a :href="'https://www.law.go.kr' + resultList[rank].law_url" target="_blank">{{ resultList[rank].law_title }}</a> - {{ resultList[rank].law_kind }}
           </div>
           <div class="contentsData">
-            {{ resultLists[rank].law_org_name }} - {{ resultLists[rank].law_start_date }}
-          </div>
-          <div v-if="drawer">
-            True
-          </div>
-          <div v-else>
-            False
+            {{ resultList[rank].law_org_name }} - {{ resultList[rank].law_start_date }}
           </div>
         </span>
       </ul>
@@ -20,39 +14,46 @@
 
 
 <script>
-import resultList from '@/assets/lawpen_dummy.json'
+// import resultList from '@/assets/lawpen_dummy.json'
 
 export default {
   name: 'ContextBox',
-  data: () => {
-    //resultLists: resultList
+
+  data () {
     return {
-      drawer: true,
-    };
+      inputText: ''
+    }
   },
-  props: ["rank"],
+  props: ["rank", "resultList"],
   methods: {
     linking(data) {
       window.open('http://law.go.kr' + data.law_url);
-      console.log(data.law_url);
-    }
-  },
-  computed: {
-    resultLists() {
-      return resultList.map((items) => {
-        return items;
-      });
+      //console.log(data.law_url);
     },
-    getUrl() {
-      var url = this.resultLists[this.rank].law_url;
-      return url;
-    }
+
+    // submitInput: function () {
+    //   console.log(this.inputText)
+    //   axios.get('http://localhost:8888/lawresult/' + this.value).then(function (response) {
+    //     console.log(response);
+    //     this.result = response.data
+    //   }).catch(function (error) {
+    //     console.log(error);
+    //   });
+    // }
+
   },
-  created() {
-    this.$EventBus.$on('click-icon', () => {
-      this.drawer = !this.drawer;
-    });
-  },
+  // computed: {
+  //   resultLists() {
+  //     return resultList.map((items) => {
+  //       return items;
+  //     });
+  //   },
+  // //   getUrl() {
+  // //     var url = this.resultLists[this.rank].law_url;
+  // //     return url;
+  // //   }
+  // },
+
 
 }
 </script>
