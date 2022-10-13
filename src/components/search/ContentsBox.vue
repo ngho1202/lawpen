@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <ul>
     <span class="contentsBox" @click="linking(resultList[rank])" style="cursor: pointer;">
       <div class="contentsTitle">
@@ -9,13 +10,33 @@
       </div>
     </span>
   </ul>
+=======
+      <ul>
+        <span class="contentsBox" @click="linking(resultList[rank])" style="cursor: pointer;">
+          <div class="contentsTitle">
+            <a :href="'https://www.law.go.kr' + resultList[rank].law_url" target="_blank">{{ resultList[rank].law_title }}</a> - {{ resultList[rank].law_kind }}
+          </div>
+          <div class="contentsData">
+            {{ resultList[rank].law_org_name }} - {{ resultList[rank].law_start_date }}
+          </div>
+        </span>
+      </ul>
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
 </template>
 
 
 
 <script>
+<<<<<<< HEAD
 export default {
   name: 'ContextBox',
+=======
+// import resultList from '@/assets/lawpen_dummy.json'
+
+export default {
+  name: 'ContextBox',
+
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
   data () {
     return {
       inputText: ''
@@ -25,9 +46,39 @@ export default {
   methods: {
     linking(data) {
       window.open('http://law.go.kr' + data.law_url);
+<<<<<<< HEAD
   //console.log(data.law_url);
     },
   },
+=======
+      //console.log(data.law_url);
+    },
+
+    // submitInput: function () {
+    //   console.log(this.inputText)
+    //   axios.get('http://localhost:8888/lawresult/' + this.value).then(function (response) {
+    //     console.log(response);
+    //     this.result = response.data
+    //   }).catch(function (error) {
+    //     console.log(error);
+    //   });
+    // }
+
+  },
+  // computed: {
+  //   resultLists() {
+  //     return resultList.map((items) => {
+  //       return items;
+  //     });
+  //   },
+  // //   getUrl() {
+  // //     var url = this.resultLists[this.rank].law_url;
+  // //     return url;
+  // //   }
+  // },
+
+
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
 }
 </script>
 

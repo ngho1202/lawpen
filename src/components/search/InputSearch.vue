@@ -1,8 +1,19 @@
 <template>
+<<<<<<< HEAD
   <form class="searchInput" id="form_tag" v-on:submit.prevent="sendData">
     <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''"
       onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
+=======
+
+  <form class="searchInput"  id="form_tag" v-on:submit.prevent="sendData">
+    <!--
+    v-on:submit.prevent="$EventBus.$emit('수정하세')"
+    -->
+    <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요."
+    onfocus="this.placeholder=''" onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
     </base-input>
+    <!-- <button v-on:click.prevent="sendData">click me!</button> -->
   </form>
 </template>
 
@@ -10,13 +21,16 @@
 // import axios from 'axios';
 import BaseInput from './BaseInput.vue';
 import EventBus from '@/eventBus.js';
+<<<<<<< HEAD
 import router from '@/router';
+=======
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
 
 export default {
   components: {
     'base-input': BaseInput
   },
-  data: function () {
+  data: function() {
     return {
       inputText: ''
     }
@@ -24,10 +38,15 @@ export default {
   name: 'InputSearch',
   methods: {
     sendData: function() {
+<<<<<<< HEAD
       EventBus.$emit('submit.prevent', this.inputText);
       router.push({name:'searchresult', params: {law_title: this.inputText}});
       console.log(this.inputText);
     },
+=======
+      EventBus.$emit('send', this.inputText);
+    }
+>>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
   }
 }
 </script>
