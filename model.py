@@ -28,6 +28,7 @@ def model_result(law_title: str = sys.argv[1]):
     except:
         print("")
 
+
     target_index = 0
     for i in range(len(id_tagged)):
         if id_tagged[i].tags[0] == law_id:

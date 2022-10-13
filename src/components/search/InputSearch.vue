@@ -1,5 +1,5 @@
 <template>
-  <form class="searchInput" id="form_tag" v-on:submit.prevent="submitInput">
+  <form class="searchInput" id="form_tag" v-on:submit.prevent="sendData">
     <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''"
       onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
     </base-input>
@@ -7,8 +7,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import BaseInput from './BaseInput.vue';
+import EventBus from '@/eventBus.js';
+import router from '@/router';
 
 export default {
   components: {
@@ -20,25 +22,13 @@ export default {
     }
   },
   name: 'InputSearch',
-
   methods: {
-    submitInput: function () {
-      console.log(this.inputText)
-      axios.get('http://localhost:8888/lawresult/' + this.inputText).then(function (response) {
-        let result_str = response.data.toString();
-        result_str = result_str.slice(0, result_str.length + 1);
-        let json_result = JSON.parse(result_str);
-        console.log(typeof json_result);
-        console.log(result_str);
-        self.result = response.data;
-
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
+    sendData: function() {
+      EventBus.$emit('submit.prevent', this.inputText);
+      router.push({name:'searchresult', params: {law_title: this.inputText}});
+      console.log(this.inputText);
+    },
   }
-
-  // //  this.$EventBus.$emit('fetchData')
 }
 </script>
 

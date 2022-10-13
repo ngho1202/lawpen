@@ -6,7 +6,7 @@
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
       <ContentsBox class="contentsbox" v-bind:rank="index"
-      v-for="index in 5" :key="index">
+      v-for="index in 10" :key="index">
       </ContentsBox>
     </body>
   </div>
@@ -17,7 +17,6 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
-
 export default {
   name: 'SearchTestView',
   components: {
@@ -34,7 +33,6 @@ export default {
 </script>
 
 <style scoped>
-
 .home {
   position: relative;
   display: block;
@@ -44,7 +42,6 @@ export default {
   text-align: center;
   scrollbar-width: none;
 }
-
 header {
   position: relative;
   display: flex;
@@ -53,13 +50,11 @@ header {
   justify-content: center;
   background-color: #C3C4FF;
 }
-
 body {
   position: relative;
   height: 400px;
   display: inline-block;
 }
-
 #searchbarbox {
   margin: 0;
   padding: 0;
@@ -70,7 +65,6 @@ body {
   z-index: 5;
   text-align: center;
 }
-
 .contentsbox {
   text-align: left;
   width: 900px;
@@ -79,7 +73,5 @@ body {
   position: relative;
   border: 1px solid lightgray;
   margin: 10px;
-
 }
-
 </style>

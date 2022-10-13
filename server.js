@@ -41,7 +41,6 @@ app.get("/lawresult/:lawtitle", function(req, res) {
     console.log(results);
     res.send(results);
   });
-  // var model_result = spawn('python', ['./model.py', law_title]);
 
 });
 

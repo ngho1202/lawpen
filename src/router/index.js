@@ -28,7 +28,7 @@ const routes = [
     component: ErrorSendView
   },
   {
-    path: '/searchresult',
+    path: '/searchresult/:law_title',
     name: 'searchresult',
     component: SearchResultView
   },
