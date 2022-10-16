@@ -5,10 +5,9 @@ const { PythonShell } = require("python-shell");
 
 const app = express();
 
-
-var corsOptions = {
-  origin: "http://localhost:8080"
-};
+let corsOptions = {
+	origin: "http://localhost:80",
+}
 
 app.use(cors(corsOptions));
 
@@ -23,9 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // simple route
-app.get("/lawresult/:lawtitle", function(req, res) {
+app.get("/lawresult/:lawtitle", function(req, res) {	
   var law_title = req.params["lawtitle"];
-
+  console.log(law_title);
+	
   var python_options = {
     mode: 'text',
     encoding: "utf-8",

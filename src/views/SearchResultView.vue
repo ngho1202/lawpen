@@ -19,15 +19,9 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
-<<<<<<< HEAD
-import EventBus from '@/eventBus.js';
-import axios from 'axios';
-=======
-
 import EventBus from '@/eventBus.js';
 import axios from 'axios';
 
->>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
 export default {
   name: 'SearchResultView',
   components: {
@@ -42,32 +36,21 @@ export default {
       resultLists: '',
     }
   },
-<<<<<<< HEAD
 
   created: function() {
     EventBus.$on('submit.prevent', function(value) {
-=======
-  created: function() {
-    EventBus.$on('send', function(value) {
->>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
       console.log(this.resultLists);
       axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
         let result_str = response.data.toString();
         result_str = result_str.slice(0, result_str.length + 1);
         let json_result = JSON.parse(result_str);
         this.resultLists = json_result;
-        // this.resultLists = result_str;
-        // console.log(this.resultLists);
         console.log(this.resultLists);
       }).catch( (error) => {
         console.log(error);
       });
     }.bind(this));
   },
-<<<<<<< HEAD
-
-=======
->>>>>>> ec1a5d254a87261bb3857e549229e1bafa1e8d95
 }
 </script>
 
