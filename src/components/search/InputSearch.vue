@@ -19,16 +19,20 @@ export default {
   },
   data: function() {
     return {
-      inputText: ''
+      inputText: this.$route.params.law_title
     }
   },
   name: 'InputSearch',
   methods: {
     sendData: function() {
-      EventBus.$emit('submit.prevent', this.inputText);
-      router.push({name:'searchresult', params: {law_title: this.inputText}});
-      console.log(this.inputText);
-    },
+
+      router.push({
+        name: 'searchresult',
+        params: { law_title: this.inputText },
+
+      })
+      EventBus.$emit('send', this.inputText);
+    }
   }
 }
 </script>

@@ -38,17 +38,27 @@ export default {
   },
 
   created: function() {
-    EventBus.$on('submit.prevent', function(value) {
-      console.log(this.resultLists);
+    EventBus.$off('send');
+    EventBus.$on('send', function(value) {
+      console.log("processing");
       axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
+        console.log(this.resultLists);
         let result_str = response.data.toString();
         result_str = result_str.slice(0, result_str.length + 1);
         let json_result = JSON.parse(result_str);
         this.resultLists = json_result;
-        console.log(this.resultLists);
+        // this.$set(this.resultLists, 0,json_result);
+
+
       }).catch( (error) => {
         console.log(error);
       });
+      // console.log("mid");
+      // console.log(this.resultLists);
+      // this.$nextTick(function() {
+      //   console.log(this.resultLists);
+      // })
+
     }.bind(this));
   },
 }

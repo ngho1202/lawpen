@@ -1,14 +1,17 @@
 <template>
-  <ul>
-    <span class="contentsBox" @click="linking(resultList[rank])" style="cursor: pointer;">
-      <div class="contentsTitle">
-        <a :href="'https://www.law.go.kr' + resultList[rank].law_url" target="_blank">{{ resultList[rank].law_title }}</a> - {{ resultList[rank].law_kind }}
-      </div>
-      <div class="contentsData">
-        {{ resultList[rank].law_org_name }} - {{ resultList[rank].law_start_date }}
-      </div>
-    </span>
-  </ul>
+      <ul>
+        <span class="contentsBox" @click="linking(dataset[index])" style="cursor: pointer;">
+          <div class="contentsTitle">
+            <!--
+            <a :href="'https://www.law.go.kr' + resultList[rank].law_url" target="_blank">
+            -->
+            {{ dataset[index].law_title }} - {{ dataset[index].law_kind }}
+          </div>
+          <div class="contentsData">
+            {{ dataset[index].law_org_name }} - {{ dataset[index].law_start_date }}
+          </div>
+        </span>
+      </ul>
 </template>
 
 <script>
@@ -16,10 +19,24 @@ export default {
   name: 'ContextBox',
   data () {
     return {
-      inputText: ''
+      inputText: '',
+      index: this.rank - 1,
+      // dataset: this.resultList
     }
   },
   props: ["rank", "resultList"],
+  // watch: {
+  //   resultList: function() {
+  //     const vm = this;
+  //     console.log("changed");
+  //     vm.dataset = vm.resultList;
+  //   }
+  // },
+  computed: {
+    dataset() {
+      return this.resultList
+    }
+  },
   methods: {
     linking(data) {
       window.open('http://law.go.kr' + data.law_url);
