@@ -58,7 +58,7 @@ export default {
   //   }.bind(this));
   // },
   created: function() {
-      // console.log("processing");
+    console.log("processing");
     console.log(this.temp);
     axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
       console.log("before ",this.resultLists);
@@ -76,7 +76,8 @@ export default {
   beforeRouteUpdate (to, from, next) {
     console.log("search again")
     console.log(this.temp);
-    this.temp = from.law_title;
+    console.log(to.params.law_title);
+    this.temp = to.params.law_title;
     console.log(this.temp);
     // console.log(this.$route.params.law_title);
 
