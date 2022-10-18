@@ -10,7 +10,7 @@
 <script>
 // import axios from 'axios';
 import BaseInput from './BaseInput.vue';
-import EventBus from '@/eventBus.js';
+// import EventBus from '@/eventBus.js';
 import router from '@/router';
 
 export default {
@@ -25,15 +25,20 @@ export default {
   name: 'InputSearch',
   methods: {
     sendData: function() {
-
       router.push({
         name: 'searchresult',
         params: { law_title: this.inputText },
-
       })
-      EventBus.$emit('send', this.inputText);
+      // EventBus.$emit('send', this.inputText);
     }
-  }
+  },
+  // watch: {
+  //  $route(to, from) {
+  //    if (to.path !== from.path) {
+  //      this.data(this.$route.params.law_title);
+  //    }
+  //  },
+  // },
 }
 </script>
 

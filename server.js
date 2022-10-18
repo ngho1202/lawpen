@@ -22,10 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // simple route
-app.get("/lawresult/:lawtitle", function(req, res) {	
+app.get("/lawresult/:lawtitle", function(req, res) {
   var law_title = req.params["lawtitle"];
   console.log(law_title);
-	
+
   var python_options = {
     mode: 'text',
     encoding: "utf-8",
@@ -42,7 +42,7 @@ app.get("/lawresult/:lawtitle", function(req, res) {
     res.send(results);
   });
 
-}); 
+});
 
 // set port, listen for requests
 const PORT = 8888;

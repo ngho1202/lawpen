@@ -19,7 +19,7 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
-import EventBus from '@/eventBus.js';
+// import EventBus from '@/eventBus.js';
 import axios from 'axios';
 
 export default {
@@ -34,32 +34,65 @@ export default {
     return {
       index: 0,
       resultLists: '',
+      temp: this.$route.params.law_title
     }
   },
 
+  // created: function() {
+  //   EventBus.$off('send');
+  //   EventBus.$on('send', function(value) {
+  //     console.log("processing");
+  //     axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
+  //       console.log("before ",this.resultLists);
+  //       let result_str = response.data.toString();
+  //       result_str = result_str.slice(0, result_str.length + 1);
+  //       let json_result = JSON.parse(result_str);
+  //       this.resultLists = json_result;
+  //       // this.$set(this.resultLists, 0,json_result);
+  //       console.log("after", this.resultLists);
+  //
+  //     }).catch( (error) => {
+  //       console.log(error);
+  //     });
+  //
+  //   }.bind(this));
+  // },
   created: function() {
-    EventBus.$off('send');
-    EventBus.$on('send', function(value) {
-      console.log("processing");
-      axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
-        console.log(this.resultLists);
-        let result_str = response.data.toString();
-        result_str = result_str.slice(0, result_str.length + 1);
-        let json_result = JSON.parse(result_str);
-        this.resultLists = json_result;
-        // this.$set(this.resultLists, 0,json_result);
+      // console.log("processing");
+    console.log(this.temp);
+    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
+      console.log("before ",this.resultLists);
+      let result_str = response.data.toString();
+      result_str = result_str.slice(0, result_str.length + 1);
+      let json_result = JSON.parse(result_str);
+      this.resultLists = json_result;
+      // this.$set(this.resultLists, 0,json_result);
+      console.log("after", this.resultLists);
 
+    }).catch( (error) => {
+      console.log(error);
+    });
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log("search again")
+    console.log(this.temp);
+    this.temp = from.law_title;
+    console.log(this.temp);
+    // console.log(this.$route.params.law_title);
 
-      }).catch( (error) => {
-        console.log(error);
-      });
-      // console.log("mid");
-      // console.log(this.resultLists);
-      // this.$nextTick(function() {
-      //   console.log(this.resultLists);
-      // })
+    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
+      console.log("before ",this.resultLists);
+      let result_str = response.data.toString();
+      result_str = result_str.slice(0, result_str.length + 1);
+      let json_result = JSON.parse(result_str);
+      this.resultLists = json_result;
+      // this.$set(this.resultLists, 0,json_result);
+      console.log("after", this.resultLists);
 
-    }.bind(this));
+    }).catch( (error) => {
+      console.log(error);
+    });
+    next()
   },
 }
 </script>
