@@ -18,7 +18,6 @@ export default {
     return {
       inputText: '',
       index: this.rank - 1,
-      // dataset: this.resultList
     }
   },
   props: ["rank", "resultList"],

@@ -28,7 +28,6 @@ export default {
         name: 'searchresult',
         params: { law_title: this.inputText },
       })
-      // EventBus.$emit('send', this.inputText);
     }
   },
 }

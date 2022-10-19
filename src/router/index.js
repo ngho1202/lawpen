@@ -45,7 +45,7 @@ const routes = [
     path: '/category',
     name: 'category',
     component: CategoryListView
-  }
+  },
 ]
 
 const router = new VueRouter({
