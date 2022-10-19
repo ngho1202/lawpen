@@ -3,7 +3,6 @@
     <base-input v-model="inputText" type="text" placeholder="  검색하고자 하는 법률명을 입력하여주세요." onfocus="this.placeholder=''"
       onblur="this.placeholder='  검색하고자 하는 법률명을 입력하여주세요.'">
     </base-input>
-    <!-- <button v-on:click.prevent="sendData">click me!</button> -->
   </form>
 </template>
 
@@ -32,13 +31,6 @@ export default {
       // EventBus.$emit('send', this.inputText);
     }
   },
-  // watch: {
-  //  $route(to, from) {
-  //    if (to.path !== from.path) {
-  //      this.data(this.$route.params.law_title);
-  //    }
-  //  },
-  // },
 }
 </script>
 

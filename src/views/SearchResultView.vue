@@ -19,7 +19,6 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
-// import EventBus from '@/eventBus.js';
 import axios from 'axios';
 
 export default {
@@ -38,56 +37,31 @@ export default {
     }
   },
 
-  // created: function() {
-  //   EventBus.$off('send');
-  //   EventBus.$on('send', function(value) {
-  //     console.log("processing");
-  //     axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
-  //       console.log("before ",this.resultLists);
-  //       let result_str = response.data.toString();
-  //       result_str = result_str.slice(0, result_str.length + 1);
-  //       let json_result = JSON.parse(result_str);
-  //       this.resultLists = json_result;
-  //       // this.$set(this.resultLists, 0,json_result);
-  //       console.log("after", this.resultLists);
-  //
-  //     }).catch( (error) => {
-  //       console.log(error);
-  //     });
-  //
-  //   }.bind(this));
-  // },
   created: function() {
     console.log("processing");
     console.log(this.temp);
-    axios.get('http://172.31.15.95:8888/lawresult/' + this.temp).then( (response) => {
-      console.log("before ",this.resultLists);
+    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-      // this.$set(this.resultLists, 0,json_result);
       console.log("after", this.resultLists);
 
     }).catch( (error) => {
       console.log(error);
     });
   },
+
   beforeRouteUpdate (to, from, next) {
     console.log("search again")
-    console.log(this.temp);
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
-    console.log(this.temp);
-    // console.log(this.$route.params.law_title);
 
     axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
-      console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-      // this.$set(this.resultLists, 0,json_result);
       console.log("after", this.resultLists);
 
     }).catch( (error) => {

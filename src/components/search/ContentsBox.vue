@@ -2,9 +2,6 @@
       <ul>
         <span class="contentsBox" @click="linking(dataset[index])" style="cursor: pointer;">
           <div class="contentsTitle">
-            <!--
-            <a :href="'https://www.law.go.kr' + resultList[rank].law_url" target="_blank">
-            -->
             {{ dataset[index].law_title }} - {{ dataset[index].law_kind }}
           </div>
           <div class="contentsData">
@@ -25,13 +22,6 @@ export default {
     }
   },
   props: ["rank", "resultList"],
-  // watch: {
-  //   resultList: function() {
-  //     const vm = this;
-  //     console.log("changed");
-  //     vm.dataset = vm.resultList;
-  //   }
-  // },
   computed: {
     dataset() {
       return this.resultList
