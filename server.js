@@ -6,7 +6,7 @@ const { PythonShell } = require("python-shell");
 const app = express();
 
 let corsOptions = {
-	origin: "http://172.31.15.95:8080",
+	origin: "http://localhost:8080",
 }
 
 app.use(cors(corsOptions));
