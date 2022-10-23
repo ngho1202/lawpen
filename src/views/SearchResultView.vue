@@ -37,30 +37,12 @@ export default {
       temp: this.$route.params.law_title
     }
   },
-
-  // created: function() {
-  //   EventBus.$off('send');
-  //   EventBus.$on('send', function(value) {
-  //     console.log("processing");
-  //     axios.get('http://localhost:8888/lawresult/' + value).then( (response) => {
-  //       console.log("before ",this.resultLists);
-  //       let result_str = response.data.toString();
-  //       result_str = result_str.slice(0, result_str.length + 1);
-  //       let json_result = JSON.parse(result_str);
-  //       this.resultLists = json_result;
-  //       // this.$set(this.resultLists, 0,json_result);
-  //       console.log("after", this.resultLists);
-  //
-  //     }).catch( (error) => {
-  //       console.log(error);
-  //     });
-  //
-  //   }.bind(this));
-  // },
-  created: function() {
+  
+created: function() {
     console.log("processing");
     console.log(this.temp);
-    axios.get('http://172.31.15.95:8888/lawresult/' + this.temp).then( (response) => {
+    let input_value = this.temp;
+    axios.get('/api/lawresult/' + input_value).then( (response) => {
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
@@ -73,15 +55,17 @@ export default {
       console.log(error);
     });
   },
+
   beforeRouteUpdate (to, from, next) {
     console.log("search again")
     console.log(this.temp);
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
     console.log(this.temp);
+    let input_value = this.temp;
     // console.log(this.$route.params.law_title);
 
-    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
+    axios.get('/api/lawresult/' + input_value).then( (response) => {
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);

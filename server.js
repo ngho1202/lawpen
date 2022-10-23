@@ -6,7 +6,7 @@ const { PythonShell } = require("python-shell");
 const app = express();
 
 let corsOptions = {
-	origin: "http://172.31.15.95:8080",
+	origin: "*";
 }
 
 app.use(cors(corsOptions));
@@ -22,7 +22,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // simple route
-app.get("/lawresult/:lawtitle", function(req, res) {
+app.get("/api/lawresult/:lawtitle", function(req, res) {
+
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Request-Methods", "GET");
+  res.header("Access-Control-Expose-Headers", "Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+
+
   var law_title = req.params["lawtitle"];
   console.log(law_title);
 
@@ -49,3 +56,4 @@ const PORT = 8888;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+app.setTimeout(120000);
