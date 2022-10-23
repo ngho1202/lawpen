@@ -19,7 +19,6 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
-// import EventBus from '@/eventBus.js';
 import axios from 'axios';
 
 export default {
@@ -37,6 +36,7 @@ export default {
       temp: this.$route.params.law_title
     }
   },
+<<<<<<< HEAD
   
 created: function() {
     console.log("processing");
@@ -48,7 +48,6 @@ created: function() {
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-      // this.$set(this.resultLists, 0,json_result);
       console.log("after", this.resultLists);
 
     }).catch( (error) => {
@@ -58,7 +57,6 @@ created: function() {
 
   beforeRouteUpdate (to, from, next) {
     console.log("search again")
-    console.log(this.temp);
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
     console.log(this.temp);
@@ -71,7 +69,6 @@ created: function() {
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-      // this.$set(this.resultLists, 0,json_result);
       console.log("after", this.resultLists);
 
     }).catch( (error) => {
