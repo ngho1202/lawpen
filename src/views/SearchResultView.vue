@@ -3,12 +3,11 @@
     <header>
       <HeaderMain></HeaderMain>
     </header>
+
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
-      <ContentsBox class="contentsbox"
-      v-bind:rank="index"
-      v-bind:resultList="resultLists"
-      v-for="index in 10" :key="index">
+      <ContentsBox class="contentsbox" v-bind:rank="index" v-bind:resultList="resultLists" v-for="index in 10"
+        :key="index">
       </ContentsBox>
     </body>
   </div>
@@ -21,6 +20,7 @@ import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
 import axios from 'axios';
 
+// axios 설명
 export default {
   name: 'SearchResultView',
   components: {
@@ -37,34 +37,34 @@ export default {
     }
   },
 
-  created: function() {
+  created: function () {
     console.log("processing");
     console.log(this.temp);
-    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
+    axios.get('http://localhost:8888/lawresult/' + this.temp).then((response) => {
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
       console.log("after", this.resultLists);
 
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error);
     });
   },
 
-  beforeRouteUpdate (to, from, next) {
+  beforeRouteUpdate(to, from, next) {
     console.log("search again")
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
 
-    axios.get('http://localhost:8888/lawresult/' + this.temp).then( (response) => {
+    axios.get('http://localhost:8888/lawresult/' + this.temp).then((response) => {
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
       console.log("after", this.resultLists);
 
-    }).catch( (error) => {
+    }).catch((error) => {
       console.log(error);
     });
     next()
@@ -82,6 +82,7 @@ export default {
   text-align: center;
   scrollbar-width: none;
 }
+
 header {
   position: relative;
   display: flex;
@@ -90,11 +91,13 @@ header {
   justify-content: center;
   background-color: #C3C4FF;
 }
+
 body {
   position: relative;
   height: 400px;
   display: inline-block;
 }
+
 #searchbarbox {
   margin: 0;
   padding: 0;
@@ -105,6 +108,7 @@ body {
   z-index: 5;
   text-align: center;
 }
+
 .contentsbox {
   text-align: left;
   width: 900px;
