@@ -13,19 +13,22 @@
 
 <script>
 export default {
+  props: ["rank", "resultList"],
   name: 'ContextBox',
   data () {
     return {
       inputText: '',
       index: this.rank - 1,
+      dataset : this.resultList,
     }
   },
-  props: ["rank", "resultList"],
-  computed: {
-    dataset() {
-      return this.resultList
+  
+  watch : {
+    resultList() {
+      this.dataset = this.resultList;
     }
   },
+
   methods: {
     linking(data) {
       window.open('http://law.go.kr' + data.law_url);

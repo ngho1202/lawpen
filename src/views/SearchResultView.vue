@@ -41,7 +41,7 @@ created: function() {
     console.log("processing");
     console.log(this.temp);
     let input_value = this.temp;
-    axios.get('/api/lawresult/' + input_value).then( (response) => {
+    axios.get('http://localhost:8888/api/lawresult/' + input_value).then( (response) => {
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
@@ -62,7 +62,7 @@ created: function() {
     let input_value = this.temp;
     // console.log(this.$route.params.law_title);
 
-    axios.get('/api/lawresult/' + input_value).then( (response) => {
+    axios.get('http://localhost:8888/api/lawresult/' + input_value).then( (response) => {
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);

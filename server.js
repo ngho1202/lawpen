@@ -45,7 +45,6 @@ app.get("/api/lawresult/:lawtitle", function(req, res) {
   PythonShell.run('model.py', python_options, function (err, results) {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
-    console.log(results);
     res.send(results);
   });
 
