@@ -36,7 +36,6 @@ export default {
       temp: this.$route.params.law_title
     }
   },
-<<<<<<< HEAD
   
 created: function() {
     console.log("processing");

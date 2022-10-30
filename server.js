@@ -6,7 +6,7 @@ const { PythonShell } = require("python-shell");
 const app = express();
 
 let corsOptions = {
-	origin: "*";
+	origin: "*",
 }
 
 app.use(cors(corsOptions));
@@ -56,4 +56,3 @@ const PORT = 8888;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-app.setTimeout(120000);
