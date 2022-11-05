@@ -4,18 +4,10 @@ const cors = require("cors");
 const { PythonShell } = require("python-shell");
 
 const app = express();
-const timeout = express.timeout
-
-app.use(timeout(120000));
-app.use(haltOnTimedout);
-
-function haltOnTimedout(req, res, next){
-  if (!req.timedout) next();
-}
 
 let corsOptions = {
 	origin: "*",
-}
+};
 
 app.use(cors(corsOptions));
 

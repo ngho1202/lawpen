@@ -38,10 +38,13 @@ export default {
   },
   
 created: function() {
-    console.log("processing");
-    console.log(this.temp);
+    console.log("processing0");
+    console.log("processing1", this.temp);
     let input_value = this.temp;
-    axios.get('http://localhost:8888/api/lawresult/' + input_value).then( (response) => {
+    console.log("processing2", input_value);
+    axios.get('/api/lawresult/' + input_value).then( (response) => {
+      console.log("processing3", this.temp);
+      console.log("processing4", input_value);
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
@@ -59,10 +62,10 @@ created: function() {
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
     console.log(this.temp);
-    let input_value = this.temp;
+    const input_value = this.temp;
     // console.log(this.$route.params.law_title);
 
-    axios.get('http://localhost:8888/api/lawresult/' + input_value).then( (response) => {
+    axios.get('/api/lawresult/' + input_value).then( (response) => {
       console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
