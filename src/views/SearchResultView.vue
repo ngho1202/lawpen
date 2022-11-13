@@ -8,7 +8,7 @@
       <ContentsBox class="contentsbox"
       v-bind:rank="index"
       v-bind:resultList="resultLists"
-      v-for="index in 10" :key="index">
+      v-for="index in 20" :key="index">
       </ContentsBox>
     </body>
   </div>
@@ -36,20 +36,13 @@ export default {
       temp: this.$route.params.law_title
     }
   },
-  
-created: function() {
-    console.log("processing0");
-    console.log("processing1", this.temp);
+
+created: async function() {
     let input_value = this.temp;
-    console.log("processing2", input_value);
     axios.get('/api/lawresult/' + input_value).then( (response) => {
-      console.log("processing3", this.temp);
-      console.log("processing4", input_value);
-      console.log("before ",this.resultLists);
-      let result_str = response.data.toString();
-      result_str = result_str.slice(0, result_str.length + 1);
-      let json_result = JSON.parse(result_str);
-      this.resultLists = json_result;
+      this.resultLists = response.data.toString();
+      this.resultLists = this.resultLists.slice(0, this.resultLists.length + 1);
+      this.resultLists = JSON.parse(this.resultLists);
       console.log("after", this.resultLists);
 
     }).catch( (error) => {
@@ -58,20 +51,15 @@ created: function() {
   },
 
   beforeRouteUpdate (to, from, next) {
-    console.log("search again")
-    console.log(to.params.law_title);
     this.temp = to.params.law_title;
-    console.log(this.temp);
     const input_value = this.temp;
     // console.log(this.$route.params.law_title);
 
     axios.get('/api/lawresult/' + input_value).then( (response) => {
-      console.log("before ",this.resultLists);
       let result_str = response.data.toString();
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-      console.log("after", this.resultLists);
 
     }).catch( (error) => {
       console.log(error);
