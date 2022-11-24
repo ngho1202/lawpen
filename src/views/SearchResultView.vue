@@ -5,10 +5,16 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
+      <div class="loadingspiner" v-show="isLoading">
+        <br>
+        <br>
+        <PulseLoader />
+      </div>
       <ContentsBox class="contentsbox"
       v-bind:rank="index"
       v-bind:resultList="resultLists"
-      v-for="index in 10" :key="index">
+      v-for="index in 10" :key="index"
+      v-show="!isLoading">
       </ContentsBox>
     </body>
   </div>
@@ -19,6 +25,7 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
+import PulseLoader from '@/components/search/PulseLoaderLoader.vue'
 import axios from 'axios';
 
 export default {
@@ -26,17 +33,19 @@ export default {
   components: {
     HeaderMain,
     SearchBar,
-    ContentsBox
+    ContentsBox,
+    PulseLoader
   },
 
   data() {
     return {
       index: 0,
       resultLists: '',
-      temp: this.$route.params.law_title
+      temp: this.$route.params.law_title,
+      isLoading: true,
     }
   },
-  
+
 created: function() {
     console.log("processing0");
     console.log("processing1", this.temp);
@@ -51,6 +60,7 @@ created: function() {
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
       console.log("after", this.resultLists);
+      this.isLoading = false
 
     }).catch( (error) => {
       console.log(error);
@@ -58,6 +68,7 @@ created: function() {
   },
 
   beforeRouteUpdate (to, from, next) {
+    this.isLoading = true
     console.log("search again")
     console.log(to.params.law_title);
     this.temp = to.params.law_title;
@@ -72,12 +83,13 @@ created: function() {
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
       console.log("after", this.resultLists);
-
+      this.isLoading = false
     }).catch( (error) => {
       console.log(error);
     });
     next()
   },
+
 }
 </script>
 
