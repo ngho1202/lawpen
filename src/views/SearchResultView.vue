@@ -5,6 +5,11 @@
     </header>
     <body>
       <SearchBar id="searchbarbox"></SearchBar>
+      <div class="loadingspiner" v-show="isLoading">
+        <br>
+        <br>
+        <PulseLoader />
+      </div>
       <ContentsBox class="contentsbox"
       v-bind:rank="index"
       v-bind:resultList="resultLists"
@@ -19,6 +24,7 @@
 import HeaderMain from '@/components/header/HeaderMain.vue'
 import SearchBar from '@/components/search/SearchBar.vue'
 import ContentsBox from '@/components/search/ContentsBox.vue'
+import PulseLoader from '@/components/search/PulseLoaderLoader.vue'
 import axios from 'axios';
 
 export default {
@@ -26,14 +32,16 @@ export default {
   components: {
     HeaderMain,
     SearchBar,
-    ContentsBox
+    ContentsBox,
+    PulseLoader
   },
 
   data() {
     return {
       index: 0,
       resultLists: '',
-      temp: this.$route.params.law_title
+      temp: this.$route.params.law_title,
+      isLoading: true,
     }
   },
 
@@ -44,6 +52,7 @@ created: async function() {
       this.resultLists = this.resultLists.slice(0, this.resultLists.length + 1);
       this.resultLists = JSON.parse(this.resultLists);
       console.log("after", this.resultLists);
+      this.isLoading = false
 
     }).catch( (error) => {
       console.log(error);
@@ -60,12 +69,12 @@ created: async function() {
       result_str = result_str.slice(0, result_str.length + 1);
       let json_result = JSON.parse(result_str);
       this.resultLists = json_result;
-
     }).catch( (error) => {
       console.log(error);
     });
     next()
   },
+
 }
 </script>
 
